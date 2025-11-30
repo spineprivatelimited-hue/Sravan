@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>False Ceiling – Spine Interiors</title>
+<style>
+  body{font-family:Poppins,Arial,sans-serif;background:#f4f4f8;margin:0;color:#111;}
+  header{background:#020617;padding:.8rem 0;}
+  .container{width:min(1100px,92%);margin:auto;}
+  .brand{display:flex;gap:.7rem;align-items:center;}
+  .logo{height:44px;width:44px;border-radius:50%;object-fit:cover;}
+  nav{display:flex;gap:1rem;color:#fff;}
+  nav a{color:#d6ad60;text-decoration:none;font-size:.9rem;}
+  .hero{padding:3rem 0 1.5rem;text-align:center;}
+  .hero h1{font-family:'Playfair Display',serif;font-size:2.2rem;color:#d6ad60;}
+  .hero p{margin-top:.4rem;color:#555;font-weight:500;}
+  .section{width:min(1100px,92%);margin:2rem auto;}
+  .section h2{font-family:'Playfair Display',serif;margin-bottom:1rem;color:#111827;}
+  .section ul{line-height:1.8;padding-left:1.2rem;}
+  .gallery{display:flex;gap:1rem;margin-top:2rem;flex-wrap:wrap;}
+  .gallery div{flex:1;min-width:220px;background:#ddd;height:260px;border-radius:12px;
+               display:flex;justify-content:center;align-items:center;color:#555;
+               font-size:1rem;font-weight:500;border:2px dashed #bbb;text-align:center;padding:0 .5rem;}
+  .cta-btn{background:#d6ad60;padding:.8rem 1.4rem;border-radius:999px;border:none;
+           font-weight:600;cursor:pointer;display:inline-block;text-decoration:none;color:#111;}
+  footer{text-align:center;font-size:.8rem;padding:1rem 0;margin-top:3rem;background:#020617;color:#bbb;}
+</style>
+</head>
+<body>
+<header>
+  <div class="container" style="display:flex;justify-content:space-between;align-items:center;">
+    <div class="brand">
+      <img src="spineinteriors1.png" class="logo" alt="Spine Interiors" />
+      <div style="color:#fff;">
+        <div style="font-family:'Playfair Display',serif;letter-spacing:2px;">SPINE INTERIORS</div>
+        <div style="font-size:.75rem;color:#cbd5f5;">Wings of Luxury — Crafting Spaces with Soul</div>
+      </div>
+    </div>
+    <nav><a href="index.html">Home</a><a href="#contact">Contact</a></nav>
+  </div>
+</header>
+
+<section class="hero">
+  <h1>False Ceiling Solutions</h1>
+  <p>Elegance from Above</p>
+</section>
+
+<section class="section">
+  <h2>Our Expertise</h2>
+  <ul>
+    <li>Gypsum, POP, PVC, wooden & metal false ceilings.</li>
+    <li>Integrated LED, cove and mood lighting concepts.</li>
+    <li>Custom 2D / 3D patterns to match your interiors.</li>
+    <li>Soundproof and acoustic options for peaceful rooms.</li>
+    <li>Neat finishing with expert installation teams.</li>
+  </ul>
+</section>
+
+<section class="section">
+  <h2>Work Gallery</h2>
+  <div class="gallery">
+    <div>ADD CEILING PHOTO 1</div>
+    <div>ADD CEILING PHOTO 2</div>
+    <div>ADD CEILING PHOTO 3</div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <a href="https://wa.me/919666926602" class="cta-btn" target="_blank">WhatsApp Us</a>
+</section>
+
+<footer>© <span id="year"></span> Spine Interiors. All rights reserved.</footer>
+
+<script>document.getElementById("year").textContent=new Date().getFullYear();</script>
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{},Tawk_LoadStart=new Date();
+(function(){var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;s1.src='https://embed.tawk.to/692c475bc860c2197de648af/1jbafdfm7';
+s1.charset='UTF-8';s1.setAttribute('crossorigin','*');s0.parentNode.insertBefore(s1,s0);})();
+</script>
+</body>
+</html>

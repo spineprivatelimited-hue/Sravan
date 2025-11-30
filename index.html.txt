@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Spine Interiors – Wings of Luxury</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    :root {
+      --primary: #073a88;
+      --primary-dark: #031a3e;
+      --accent: #d6ad60;
+      --bg-soft: #f4f4f8;
+      --card-bg: #ffffff;
+      --text-main: #111827;
+      --text-muted: #6b7280;
+      --radius-lg: 18px;
+      --shadow-soft: 0 20px 45px rgba(15, 23, 42, 0.18);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827, #020617);
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      min-height: 100vh;
+    }
+
+    .container {
+      width: min(1100px, 100% - 2.5rem);
+      margin-inline: auto;
+    }
+
+    /* Header */
+    header {
+      border-bottom: 1px solid rgba(148, 163, 184, 0.3);
+      backdrop-filter: blur(16px);
+      background: rgba(15, 23, 42, 0.92);
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-block: 0.6rem;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .logo {
+      height: 44px;
+      width: 44px;
+      border-radius: 999px;
+      object-fit: cover;
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .brand-title {
+      font-family: "Playfair Display", serif;
+      letter-spacing: 0.18em;
+      font-size: 0.95rem;
+      color: #e5e7eb;
+    }
+
+    .brand-tagline {
+      font-size: 0.75rem;
+      color: #cbd5f5;
+    }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      color: #e5e7eb;
+      opacity: 0.85;
+      position: relative;
+      padding-bottom: 0.15rem;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: width 0.2s ease;
+    }
+
+    nav a:hover {
+      opacity: 1;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero */
+    .hero {
+      padding: 3rem 0 2.7rem;
+      color: #f9fafb;
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.1fr);
+      gap: 2.3rem;
+      align-items: center;
+    }
+
+    .eyebrow {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--accent);
+      margin-bottom: 0.65rem;
+    }
+
+    .hero-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.1rem, 3vw, 2.7rem);
+      margin-bottom: 0.7rem;
+    }
+
+    .hero-lead {
+      font-size: 0.95rem;
+      color: #e5e7eb;
+      max-width: 34rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 0.8rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #111827;
+      border-radius: 999px;
+      padding: 0.7rem 1.4rem;
+      border: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 14px 35px rgba(0, 0, 0, 0.45);
+      transition: transform 0.15s ease, box-shadow 0.15s ease,
+        background 0.15s ease;
+    }
+
+    .btn-primary:hover {
+      background: #e5bf7d;
+      transform: translateY(-1px);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.5);
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      opacity: 0.9;
+      color: #cbd5f5;
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top left, #1d2753, #020617);
+      border-radius: 20px;
+      padding: 1.5rem 1.4rem;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-location {
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.7rem;
+    }
+
+    .hero-points {
+      list-style: none;
+      padding-left: 0;
+      font-size: 0.9rem;
+      color: #e5e7eb;
+    }
+
+    .hero-points li {
+      margin-bottom: 0.45rem;
+      position: relative;
+      padding-left: 1rem;
+    }
+
+    .hero-points li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+    }
+
+    /* Services Section */
+    .section {
+      background: var(--bg-soft);
+      border-radius: 28px 28px 0 0;
+      margin-top: 1.2rem;
+      padding: 2.8rem 0 3.2rem;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-family: "Playfair Display", serif;
+      font-size: 1.9rem;
+      color: var(--primary-dark);
+      margin-bottom: 0.4rem;
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .service-card {
+      background: var(--card-bg);
+      border-radius: var(--radius-lg);
+      padding: 1.4rem 1.5rem 1.3rem;
+      box-shadow: 0 16px 35px rgba(15, 23, 42, 0.12);
+      border: 1px solid #e5e7eb;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .service-title {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 1.05rem;
+    }
+
+    .service-icon {
+      font-size: 1.6rem;
+    }
+
+    .service-title a {
+      text-decoration: none;
+      color: var(--text-main);
+      transition: color 0.15s ease;
+    }
+
+    .service-title a:hover {
+      color: var(--accent);
+    }
+
+    .service-tagline {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--accent);
+    }
+
+    .service-card ul {
+      margin-top: 0.2rem;
+      padding-left: 1.1rem;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* TIMELINE - 40 WORKING DAYS */
+    .timeline-section {
+      background: #ffffff;
+      padding: 3rem 0 3.2rem;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .timeline-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .timeline-title {
+      font-family: "Playfair Display", serif;
+      font-size: 1.7rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .timeline-title span {
+      color: #792b8b;
+      font-weight: 600;
+    }
+
+    .timeline-subtitle {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .timeline-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-top: 1.5rem;
+    }
+
+    .timeline-step {
+      flex: 1;
+      min-width: 170px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #374151;
+    }
+
+    .timeline-circle {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 0.7rem;
+      border-radius: 50%;
+      background: #792b8b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 12px 25px rgba(79, 70, 229, 0.35);
+    }
+
+    .timeline-circle img {
+      max-width: 70px;
+      max-height: 70px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .timeline-step p {
+      margin: 0;
+      line-height: 1.4;
+    }
+
+    /* Contact */
+    .contact {
+      padding: 2.8rem 0 3.2rem;
+      background: var(--bg-soft);
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.1fr);
+      gap: 2rem;
+      align-items: flex-start;
+    }
+
+    .contact-list {
+      list-style: none;
+      margin-top: 1rem;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    .contact-list li {
+      margin-bottom: 0.6rem;
+    }
+
+    .contact-list strong {
+      color: var(--text-main);
+    }
+
+    .contact-list a {
+      color: var(--primary);
+    }
+
+    .contact-card {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 1.6rem 1.5rem;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid #e5e7eb;
+    }
+
+    .contact-card h3 {
+      margin-bottom: 0.8rem;
+      font-size: 1.05rem;
+      color: var(--primary-dark);
+    }
+
+    form {
+      display: grid;
+      gap: 0.8rem;
+      font-size: 0.85rem;
+    }
+
+    input,
+    textarea {
+      font: inherit;
+      border-radius: 10px;
+      border: 1px solid #e5e7eb;
+      padding: 0.55rem 0.7rem;
+      resize: vertical;
+    }
+
+    input:focus,
+    textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 1px rgba(7, 58, 136, 0.25);
+    }
+
+    .form-note {
+      margin-top: 0.4rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* Footer */
+    footer {
+      background: #020617;
+      color: #9ca3af;
+      padding: 1rem 0 1.2rem;
+      font-size: 0.8rem;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 2.3rem;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline-grid {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.4rem;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <!-- HEADER -->
+    <header>
+      <div class="container header-inner">
+        <div class="brand">
+          <img src="spineinteriors1.png" alt="Spine Interiors Logo" class="logo" />
+          <div class="brand-text">
+            <span class="brand-title">SPINE INTERIORS</span>
+            <span class="brand-tagline">Wings of Luxury — Crafting Spaces with Soul</span>
+          </div>
+        </div>
+        <nav>
+          <a href="#services">Services</a>
+          <a href="#contact">Contact</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div>
+          <p class="eyebrow">Crafting Spaces with Soul</p>
+          <h1 class="hero-title">
+            Elegant, functional & soulful interiors<br />
+            for modern Indian homes.
+          </h1>
+          <p class="hero-lead">
+            At Spine Interiors, we combine modern innovation with traditional Indian craftsmanship to
+            create elegant, functional, and soulful living spaces. From concept to completion, we design
+            interiors that reflect your taste, lifestyle, and dreams.
+          </p>
+          <div class="hero-cta">
+            <a href="#contact"><button class="btn-primary">Book a Free Consultation</button></a>
+            <span class="hero-note">Serving Hyderabad &amp; Warangal</span>
+          </div>
+        </div>
+        <div class="hero-card">
+          <p class="hero-location">End-to-End Interior Solutions</p>
+          <ul class="hero-points">
+            <li>Modular furniture, false ceiling & electrical works</li>
+            <li>Painting, flooring, tiling, solar, cleaning & pest control</li>
+            <li>Design + execution with experienced professionals</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-header">
+          <h2 class="section-title">Our Services</h2>
+          <p class="section-subtitle">
+            Carefully designed interiors, executed with precision and powered by reliable services.
+          </p>
+        </div>
+
+        <div class="service-grid">
+          <!-- Modular Furniture -->
+          <article class="service-card">
+            <div class="service-title">
+              <span class="service-icon">🪑</span>
+              <a href="modular-furniture.html">Modular Furniture Services</a>
+            </div>
+            <p class="service-tagline">Customized Comfort, Built to Last</p>
+            <ul>
+              <li>Custom-made modular units to match your style & lifestyle.</li>
+              <li>Space-saving layouts that maximize storage & functionality.</li>
+              <li>Premium boards, hardware & soft-close fittings for durability.</li>
+              <li>3D visualization support – see designs before execution.</li>
+              <li>Budget-friendly options without compromising on quality.</li>
+              <li>Low-maintenance, high-functionality modern solutions.</li>
+              <li>Specialists in living rooms, bedrooms & modular kitchens.</li>
+            </ul>
+          </article>
+
+          <!-- False Ceiling -->
+          <article class="service-card">
+            <div class="service-title">
+              <span class="service-icon">☁</span>
+              <a href="false-ceiling.html">False Ceiling Solutions</a>
+            </div>
+            <p class="service-tagline">Elegance from Above</p>
+            <ul>
+              <li>Gypsum, POP, PVC, wooden & metal false ceilings.</li>
+              <li>Smart lighting integration – LED, cove & mood lighting.</li>
+              <li>Energy-efficient designs that look stylish & save power.</li>
+              <li>Custom 2D/3D patterns matching your interior theme.</li>
+              <li>Acoustic & soundproof options for peaceful spaces.</li>
+            </ul>
+          </article>
+
+          <!-- Electrical Works -->
+          <article class="service-card">
+            <div class="service-title">
+              <span class="service-icon">⚡</span>
+              <a href="electrical-works.html">Electrical Works</a>
+            </div>
+            <p class="service-tagline">Powering Homes with Precision</p>
+            <ul>
+              <li>ISI-certified copper wiring in PVC concealed conduits.</li>
+              <li>Three-phase supply with MCBs & distribution boards.</li>
+              <li>Concealed TV, internet & telephone points in all rooms.</li>
+              <li>Professional installation & repair services for safety.</li>
+            </ul>
+          </article>
+
+          <!-- Painting Solutions -->
+          <article class="service-card">
+            <div class="service-title">
+              <span class="service-icon">🎨</span>
+              <a href="painting-solutions.html">Painting Solutions</a>
+            </div>
+            <p class="service-tagline">Add Color to Your Dreams</p>
+            <ul>
+              <li>Interior & exterior painting – texture, stencil & luxury finishes.</li>
+              <li>Fresh, clean appearance for homes, offices & commercial spaces.</li>
+              <li>High-quality paints that protect from moisture & sunlight.</li>
+              <li>Options that resist dust, mold & stains – eco-friendly available.</li>
+              <li>Enhances the beauty, value & atmosphere of your space.</li>
+            </ul>
+          </article>
+
+          <!-- Flooring & Tiling -->
+          <article class="service-card">
+            <div class="service-title">
+              <span class="service-icon">🧱</span>
+              <a href="flooring-tiling.html">Flooring &amp; Tiling</a>
+            </div>
+            <p class="service-tagline">Step into Style</p>
+            <ul>
+              <li>Modern flooring that enhances beauty & elegance.</li>
+              <li>Durable, stain- & scratch-resistant materials.</li>
+              <li>Easy to clean – ideal for kitchens, bathrooms & living rooms.</li>
+              <li>Expert craftsmanship ensures smooth finish & alignment.</li>
+              <li>Materials that add warmth, silence & comfort underfoot.</li>
+            </ul>
+          </article>
+
+          <!-- Solar Installation -->
+          <article class="service-card">
+            <div class="service-title">
+              <span class="service-icon">🔆</span>
+              <a href="solar-installation.html">Solar Installation</a>
+            </div>
+            <p class="service-tagline">Power Your Home with the Sun</p>
+            <ul>
+              <li>On-grid, off-grid & hybrid solar power systems.</li>
+              <li>High-efficiency panels with long-term performance warranty.</li>
+              <li>Inverter-based setups for maximum power conversion.</li>
+              <li>Guidance for government subsidies & documentation.</li>
+              <li>Low-maintenance solutions with periodic service options.</li>
+              <li>Reduces electricity bills and carbon footprint.</li>
+            </ul>
+          </article>
+
+          <!-- Cleaning Services -->
+          <article class="service-card">
+            <div class="service-title">
+              <span class="service-icon">🧹</span>
+              <a href="cleaning-services.html">Cleaning Services</a>
+            </div>
+            <p class="service-tagline">Professional Home &amp; Office Cleaning</p>
+            <ul>
+              <li>Deep cleaning for homes, offices and commercial spaces.</li>
+              <li>Kitchen, bathroom and sofa deep cleaning services.</li>
+              <li>Move-in / move-out cleaning for new homes.</li>
+              <li>Use of professional-grade equipment and chemicals.</li>
+              <li>Flexible packages for one-time or periodic cleaning.</li>
+            </ul>
+          </article>
+
+          <!-- Pest Control -->
+          <article class="service-card">
+            <div class="service-title">
+              <span class="service-icon">🐜</span>
+              <a href="pest-control.html">Pest Control</a>
+            </div>
+            <p class="service-tagline">Safe &amp; Long-Lasting Pest Protection</p>
+            <ul>
+              <li>Treatment for cockroaches, ants, lizards and other pests.</li>
+              <li>Termite control solutions for long-term protection.</li>
+              <li>Odourless and child-safe chemical options.</li>
+              <li>Annual maintenance contracts for hassle-free protection.</li>
+              <li>Experienced technicians with proper safety gear.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECT TIMELINE SECTION WITH CIRCULAR ICONS -->
+    <section class="timeline-section">
+      <div class="container">
+        <div class="timeline-header">
+          <h2 class="timeline-title">
+            PROJECT COMPLETION IN <span>40 WORKING DAYS*</span>
+          </h2>
+          <p class="timeline-subtitle">
+            A clear, structured process to take your dream from concept to completion.
+          </p>
+        </div>
+
+        <div class="timeline-grid">
+          <div class="timeline-step">
+            <div class="timeline-circle">
+              <img src="ICONSTEP1.png" alt="Step 1" />
+            </div>
+            <p>Talk to our Interior Designer &amp; Get an Estimate</p>
+          </div>
+
+          <div class="timeline-step">
+            <div class="timeline-circle">
+              <img src="ICONSTEP2.png" alt="Step 2" />
+            </div>
+            <p>Detailed Drawing and Approval</p>
+          </div>
+
+          <div class="timeline-step">
+            <div class="timeline-circle">
+              <img src="ICONSTEP3.png" alt="Step 3" />
+            </div>
+            <p>Production at Our Own Facilities</p>
+          </div>
+
+          <div class="timeline-step">
+            <div class="timeline-circle">
+              <img src="ICONSTEP4.png" alt="Step 4" />
+            </div>
+            <p>Material Delivery &amp; On-site Execution</p>
+          </div>
+
+          <div class="timeline-step">
+            <div class="timeline-circle">
+              <img src="ICONSTEP5.png" alt="Step 5" />
+            </div>
+            <p>On-Time Project Hand Over</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <div class="container contact-grid">
+        <div>
+          <h2 class="section-title" style="text-align:left;">Contact Us</h2>
+          <p class="section-subtitle" style="text-align:left;">
+            Share your requirements and our team will connect with you to plan your dream space.
+          </p>
+          <ul class="contact-list">
+            <li><strong>📍 Locations:</strong> Hyderabad | Warangal</li>
+            <li><strong>📧 Email:</strong>
+              <a href="mailto:connect@spineinteriors.in">connect@spineinteriors.in</a>
+            </li>
+            <li><strong>📞 Call / WhatsApp:</strong>
+              <a href="https://wa.me/919666926602" target="_blank">+91 9666926602</a>
+            </li>
+            <li><strong>📱 Follow us:</strong>
+              <a href="https://www.instagram.com/spine_interiors?igsh=MTZnc3Nkemp2N3VoZA==" target="_blank">@spine_interiors</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="contact-card">
+          <h3>Request a Call Back</h3>
+          <form action="https://formspree.io/f/xldqdlww" method="POST">
+            <label>
+              Name
+              <input type="text" name="name" placeholder="Your Name" required />
+            </label>
+            <label>
+              Phone
+              <input type="tel" name="phone" placeholder="Your Phone Number" required />
+            </label>
+            <label>
+              City
+              <input type="text" name="city" placeholder="Hyderabad / Warangal / Other" />
+            </label>
+            <label>
+              Project Type
+              <input type="text" name="project_type" placeholder="Home / Office / Commercial" />
+            </label>
+            <label>
+              Message
+              <textarea name="message" rows="3" placeholder="Brief about your project"></textarea>
+            </label>
+            <button type="submit" class="btn-primary">Send Request</button>
+            <p class="form-note">
+              Our team will contact you within 24–48 working hours.
+            </p>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="container footer-inner">
+        <span>© <span id="year"></span> Spine Interiors. All rights reserved.</span>
+        <span>Wings of Luxury — Crafting Spaces with Soul.</span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const y = document.getElementById("year");
+    if (y) y.textContent = new Date().getFullYear();
+  </script>
+
+  <!-- Tawk.to Script -->
+  <script type="text/javascript">
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src='https://embed.tawk.to/692c475bc860c2197de648af/1jbafdfm7';
+  s1.charset='UTF-8';
+  s1.setAttribute('crossorigin','*');
+  s0.parentNode.insertBefore(s1,s0);
+  })();
+  </script>
+</body>
+</html>
